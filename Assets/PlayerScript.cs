@@ -20,15 +20,16 @@ public class PlayerScript : MonoBehaviour
         
     }
 
+    // Fixed update is used for the player character, this code is run every frame of the game.
     private void FixedUpdate()
     {
-        //player movement
+        //Horizontal player movement
        
         pRigid.velocity = new Vector2(pMove.x * speed * Time.deltaTime, pRigid.velocity.y);
         pMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
 
-        // Flipping the spirte
+        // Flipping the spirte when changing direction
         if (pRigid.velocity.x > 0.01)
         {
             pSprite.flipX = false;
@@ -39,6 +40,7 @@ public class PlayerScript : MonoBehaviour
         }
 
 
+        //Player jumping code, a bit dodgy can be fixed up if needed
         Vector2 playerUp;
         playerUp = pRigid.velocity;
         if (isGrounded && Input.GetAxisRaw("Jump") > 0)
@@ -51,6 +53,9 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+
+    // code that uses the box collider on the player character to see if they are grounded
+    // if on the ground, they can jump!
     public void OnTriggerEnter2D(Collider2D collision)
     {
         isGrounded = true;
