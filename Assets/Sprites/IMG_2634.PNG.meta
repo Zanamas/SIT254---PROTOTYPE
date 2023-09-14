@@ -121,7 +121,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: IMG_2634_0
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1228
+        width: 489
+        height: 568
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f48642f0a489e7547b6ad1be5f6b82c0
+      internalID: -263024401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_2634_1
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 1287
+        width: 489
+        height: 567
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a311fb70b8710419909ffc87b55eb3
+      internalID: 553759620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_2634_2
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 210
+        width: 489
+        height: 567
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c647b7e25dfab48bc7dac665ff6462
+      internalID: -328371532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_2634_3
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 186
+        width: 489
+        height: 567
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa6324416a090e94ba852f77d6767531
+      internalID: -1813402545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +216,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IMG_2634_0: -263024401
+      IMG_2634_1: 553759620
+      IMG_2634_2: -328371532
+      IMG_2634_3: -1813402545
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
