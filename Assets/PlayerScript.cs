@@ -28,6 +28,7 @@ public class PlayerScript : MonoBehaviour
     public Text _plants;
 
     public bool gameOver = false;
+    public GameObject goScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -40,12 +41,22 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         //Horizontal player movement
-        pRigid.velocity = new Vector2(pMove.x * speed * Time.deltaTime, pRigid.velocity.y);
-        pMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (gameOver == false) {
+            pRigid.velocity = new Vector2(pMove.x * speed * Time.deltaTime, pRigid.velocity.y);
+            pMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        }
+        
 
         //update plant/gold
         _gold.text = gold.ToString();   
         _plants.text = plants.ToString();
+
+        //check to see if palyer is dead
+        if (pHealth.Health <= 0)
+        {
+            gameOver = true;
+            goScreen.SetActive(true);
+        }
 
         // Flipping the spirte when changing direction
         if (pRigid.velocity.x > 0.01)
@@ -61,7 +72,7 @@ public class PlayerScript : MonoBehaviour
         //Player jumping code, a bit dodgy can be fixed up if needed
         Vector2 playerUp;
         playerUp = pRigid.velocity;
-        if (isGrounded && Input.GetAxisRaw("Jump") > 0)
+        if (isGrounded && Input.GetAxisRaw("Jump") > 0 && gameOver == false)
         {
 
             //Pushes the player up
