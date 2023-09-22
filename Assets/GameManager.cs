@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+
     //Making the game manager a singleton
     public static GameManager gameManager { get; private set; }
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         {
             gameManager = this;
         }
+
     }
 
     // Update is called once per frame
