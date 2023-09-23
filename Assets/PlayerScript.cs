@@ -30,6 +30,10 @@ public class PlayerScript : MonoBehaviour
     public bool gameOver = false;
     public GameObject goScreen;
 
+    public GameObject _resText;
+
+    Vector2 resPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,11 +104,35 @@ public class PlayerScript : MonoBehaviour
     // if on the ground, they can jump!
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        isGrounded = true;
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+        else if (collision.gameObject.tag == "RespawnPoint")
+        {
+            resPoint = collision.gameObject.transform.position;
+            _resText.SetActive(true);
+        }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-        isGrounded = false;
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = false;
+        }
+        else if (collision.gameObject.tag == "RespawnPoint")
+        {
+            _resText.SetActive(false);
+        }
+    }
+
+    public void Respawn()
+    {
+        gameOver = false;
+        pHealth.healUnit(6);
+        transform.position = resPoint;
+        goScreen.SetActive(false);
+
     }
 }
 
