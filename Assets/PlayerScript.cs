@@ -90,13 +90,25 @@ public class PlayerScript : MonoBehaviour
     //when the player touches an enemy and gets damaged
     void OnCollisionEnter2D(Collision2D collision)
     {
+
+        //        if (collision.gameObject.name == "JumpOnHead")
+        //        {
+        //       Vector3 knockBack = new Vector3(transform.position.x - collision.gameObject.transform.position.x, transform.position.y - collision.gameObject.transform.position.y, 0);
+        //        pRigid.velocity = (knockBack * knockBackStr);
+        //
+        //        Destroy(collision.gameObject, 0);
+        //    }
+
+
         if (collision.gameObject.tag == "Enemy")
         {
-            Vector3 knockBack = new Vector3(transform.position.x - collision.gameObject.transform.position.x, transform.position.y - collision.gameObject.transform.position.y, 0);
-            pRigid.velocity = (knockBack * knockBackStr);
 
-            pHealth.Health -= 1;
+                Vector3 knockBack = new Vector3(transform.position.x - collision.gameObject.transform.position.x, transform.position.y - collision.gameObject.transform.position.y, 0);
+                pRigid.velocity = (knockBack * knockBackStr);
+
+                pHealth.Health -= 1;
         }
+        
 
 
     }
@@ -104,26 +116,40 @@ public class PlayerScript : MonoBehaviour
     // if on the ground, they can jump!
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        switch (collision.gameObject.tag)
         {
-            isGrounded = true;
-        }
-        else if (collision.gameObject.tag == "RespawnPoint")
-        {
-            resPoint = collision.gameObject.transform.position;
-            _resText.SetActive(true);
+            case "Ground":
+                isGrounded = true;
+                break;
+
+            case "RespawnPoint":
+                resPoint = collision.gameObject.transform.position;
+                _resText.SetActive(true);
+                break;
+            case "Plant":
+                Destroy(collision.gameObject, 0);
+                plants += 1;
+                break;
+
         }
     }
+
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+
+        switch (collision.gameObject.tag)
         {
-            isGrounded = false;
+            case "Ground":
+                isGrounded = false;
+                break;
+
+            case "RespawnPoint":
+                _resText.SetActive(false);
+                break;
+
         }
-        else if (collision.gameObject.tag == "RespawnPoint")
-        {
-            _resText.SetActive(false);
-        }
+
+
     }
 
     public void Respawn()
